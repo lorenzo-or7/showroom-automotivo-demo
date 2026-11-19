@@ -1,0 +1,79 @@
+.page {
+  display: grid;
+  gap: var(--space-5);
+  padding-top: calc(var(--nav-h) + 40px);
+  padding-bottom: var(--space-9);
+  min-height: 100svh;
+}
+
+.block {
+  background: linear-gradient(90deg, var(--surface) 0%, var(--surface-strong) 50%, var(--surface) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+  border-radius: var(--radius-s);
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+.crumb {
+  width: 9rem;
+  height: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.85fr) minmax(19rem, 1fr);
+  gap: clamp(1.5rem, 1rem + 2.5vw, 4rem);
+}
+
+.stage {
+  aspect-ratio: 16 / 10;
+}
+
+.side {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+}
+
+.line {
+  height: 16px;
+}
+
+.title {
+  height: 64px;
+}
+
+.price {
+  height: 40px;
+  width: 60%;
+}
+
+.btn {
+  height: 48px;
+  border-radius: var(--radius-pill);
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.card {
+  aspect-ratio: 3 / 4;
+}
+
+@media (max-width: 1099px) {
+  .grid,
+  .cols {
+    grid-template-columns: 1fr;
+  }
+}

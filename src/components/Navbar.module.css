@@ -1,0 +1,224 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-nav);
+  padding: 12px var(--gutter) 0;
+  pointer-events: none;
+}
+
+.bar {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  max-width: calc(var(--max) - 2 * var(--gutter));
+  height: var(--nav-h);
+  margin-inline: auto;
+  padding: 0 10px 0 22px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  color: var(--text);
+  transition:
+    background-color var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out),
+    backdrop-filter var(--dur) var(--ease-out);
+}
+
+/* Sobre a hero, o texto é sempre claro (a foto é escura nos dois temas) */
+.header[data-over-hero] .bar {
+  color: #f5f5f2;
+}
+
+.header[data-solid] .bar {
+  background: var(--nav-solid);
+  border-color: var(--line);
+  backdrop-filter: saturate(140%) blur(14px);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-height: 44px;
+  align-content: center;
+  padding-block: 10px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.descriptor {
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.72;
+}
+
+.nav {
+  margin-left: auto;
+}
+
+.links {
+  display: flex;
+  gap: 4px;
+}
+
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  opacity: 0.82;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.link:hover,
+.link[aria-current] {
+  opacity: 1;
+}
+
+.indicator {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 8px;
+  height: 1.5px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.header[data-over-hero] .indicator {
+  background: #d9b48c;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconBtn {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: inherit;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.iconBtn:hover {
+  background: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+.cta {
+  --btn-bg: var(--accent);
+  --btn-fg: var(--on-accent);
+  --btn-line: var(--accent);
+}
+
+.cta:hover {
+  --btn-bg: var(--accent-hover);
+  --btn-line: var(--accent-hover);
+}
+
+.header[data-over-hero] .cta {
+  --btn-bg: #f5f5f2;
+  --btn-fg: #101214;
+  --btn-line: #f5f5f2;
+}
+
+.menuBtn {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .nav {
+    display: none;
+  }
+  .actions {
+    margin-left: auto;
+  }
+  .menuBtn {
+    display: inline-grid;
+  }
+}
+
+@media (max-width: 1100px) {
+  .descriptor {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .header {
+    padding-top: 8px;
+  }
+  .bar {
+    padding-left: 16px;
+    gap: var(--space-3);
+  }
+  .cta {
+    display: none;
+  }
+}
+
+/* ---------- Menu móvel ---------- */
+.sheet {
+  pointer-events: auto;
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: 20px var(--gutter) calc(32px + env(safe-area-inset-bottom));
+  background: var(--bg);
+  color: var(--text);
+  overflow-y: auto;
+}
+
+.sheetTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 52px;
+  padding-left: 6px;
+}
+
+.sheetLinks {
+  display: grid;
+  border-top: 1px solid var(--line);
+}
+
+.sheetLink {
+  display: flex;
+  align-items: center;
+  min-height: 72px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 11vw, 3.5rem);
+  line-height: 1;
+  text-decoration: none;
+}
+
+.sheetLink[aria-current] {
+  color: var(--accent);
+}
+
+.sheet > :global(.btn) {
+  margin-top: auto;
+}

@@ -1,0 +1,146 @@
+.tray {
+  position: fixed;
+  left: 50%;
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  z-index: var(--z-tray);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: max-content;
+  max-width: calc(100vw - 2 * var(--gutter));
+  padding: 8px 8px 8px 20px;
+  translate: -50% 0;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  background: var(--nav-solid);
+  backdrop-filter: saturate(140%) blur(14px);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  box-shadow: var(--shadow);
+}
+
+.label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.list {
+  display: flex;
+  gap: 6px;
+  min-width: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 3px 3px 3px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+}
+
+.item img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.remove {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+  position: relative;
+}
+
+/* área de toque ampliada para ~44px */
+.remove::before {
+  content: '';
+  position: absolute;
+  inset: -5px;
+}
+
+.remove:hover {
+  color: var(--text);
+  background: var(--surface-strong);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.clear {
+  min-height: 44px;
+  padding: 0 10px;
+  border: 0;
+  background: none;
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.clear:hover {
+  color: var(--text);
+}
+
+.hint {
+  padding-right: 12px;
+  font-size: 0.8125rem;
+  color: var(--text-subtle);
+  white-space: nowrap;
+}
+
+/* Mobile: uma linha só, com miniaturas sobrepostas; remoção individual fica nos cards e no comparador */
+@media (max-width: 860px) {
+  .tray {
+    left: var(--gutter);
+    right: var(--gutter);
+    width: auto;
+    max-width: none;
+    translate: none;
+    gap: 10px;
+    padding: 6px 6px 6px 12px;
+  }
+  .list {
+    order: -1;
+    gap: 0;
+  }
+  .item {
+    padding: 0;
+    border: 2px solid var(--bg);
+    border-radius: 50%;
+  }
+  .item + .item {
+    margin-left: -12px;
+  }
+  .name,
+  .remove {
+    display: none;
+  }
+  .label {
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: normal;
+    line-height: 1.2;
+  }
+  .hint {
+    display: none;
+  }
+}

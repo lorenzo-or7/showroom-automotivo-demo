@@ -1,0 +1,151 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: max(640px, 100svh);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  color: #f5f5f2;
+  background: #0b0c0d;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+/* Fallback estático: se a foto não carregar, fica um palco grafite com luz lateral */
+.media[data-failed] {
+  background:
+    radial-gradient(120% 80% at 75% 40%, #2a2f33 0%, #101214 60%),
+    #101214;
+}
+
+.mediaInner {
+  position: absolute;
+  inset: -2% 0 -12%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% 62%;
+}
+
+/* Scrim funcional: garante contraste do texto em qualquer recorte da foto */
+.scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10, 11, 12, 0.55) 0%, rgba(10, 11, 12, 0) 22%),
+    linear-gradient(0deg, rgba(10, 11, 12, 0.92) 0%, rgba(10, 11, 12, 0.55) 38%, rgba(10, 11, 12, 0) 70%),
+    linear-gradient(90deg, rgba(10, 11, 12, 0.5) 0%, rgba(10, 11, 12, 0) 55%);
+}
+
+.content {
+  position: relative;
+  padding-top: calc(var(--nav-h) + 72px);
+  padding-bottom: clamp(2rem, 1rem + 4vw, 4.5rem);
+  display: grid;
+  gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+}
+
+.title {
+  font-size: var(--step-hero);
+  line-height: 0.88;
+  letter-spacing: -0.025em;
+  max-width: 12ch;
+  text-wrap: balance;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: var(--space-6);
+}
+
+.lede {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 34rem;
+}
+
+.description {
+  font-size: var(--step-1);
+  line-height: 1.55;
+  color: rgba(245, 245, 242, 0.86);
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.placard {
+  min-width: 15rem;
+  max-width: 19rem;
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(245, 245, 242, 0.35);
+}
+
+.placard figcaption {
+  display: grid;
+  gap: 2px;
+}
+
+.placardKicker {
+  font-size: 0.75rem;
+  color: rgba(245, 245, 242, 0.7);
+}
+
+.placardName {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 1.1;
+}
+
+.placardMeta {
+  font-size: 0.875rem;
+  color: rgba(245, 245, 242, 0.78);
+  font-variant-numeric: tabular-nums;
+}
+
+.placardLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(245, 245, 242, 0.4);
+}
+
+.placardLink:hover {
+  text-decoration-color: #d9b48c;
+}
+
+@media (max-width: 860px) {
+  .footer {
+    grid-template-columns: 1fr;
+  }
+  .placard {
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .image {
+    object-position: 62% 60%;
+  }
+  .ctas :global(.btn) {
+    flex: 1 1 auto;
+  }
+  .placard {
+    display: none;
+  }
+}

@@ -1,0 +1,23 @@
+.wrap {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.preview {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  background: var(--bg-raised);
+  white-space: pre-wrap;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.note {
+  font-size: 0.875rem;
+  color: var(--text-subtle);
+  max-width: 56ch;
+}

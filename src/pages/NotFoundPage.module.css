@@ -1,0 +1,26 @@
+.page {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: var(--space-5);
+  min-height: 80svh;
+  padding-top: calc(var(--nav-h) + 48px);
+  padding-bottom: var(--space-8);
+}
+
+.title {
+  font-size: var(--step-5);
+  max-width: 14ch;
+}
+
+.text {
+  color: var(--text-muted);
+  max-width: 48ch;
+  font-size: var(--step-1);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
